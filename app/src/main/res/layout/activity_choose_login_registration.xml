@@ -1,20 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ChooseLoginRegistrationActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@drawable/login_background"
+    >
+
     <Button
+        android:id="@+id/login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="login"
-        android:id="@+id/login"/>
+        android:layout_margin="20dp"
+        android:backgroundTint="#ffaa00"
+        android:background="@drawable/rounded_corner"
+        android:textColor="#FFF"/>
+
     <Button
+        android:id="@+id/register"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="register"
-        android:id="@+id/register"/>
+        android:layout_below="@id/login"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="0dp"
+        android:backgroundTint="#ffaa00"
+        android:background="@drawable/rounded_corner"
+        android:textColor="#FFF"/>
 
-</LinearLayout>
+</RelativeLayout>
