@@ -5,28 +5,43 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".RegistrationActivity"
+    android:gravity="center_horizontal"
     android:orientation="vertical"
-    android:gravity="center">
+    android:background="@drawable/loginnn_background">
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="150dp"
+        android:layout_height="200dp"
+        app:srcCompat="@drawable/icon" />
 
     <EditText
         android:id="@+id/email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="email"
-        android:minHeight="48dp" />
+        android:minHeight="48dp"
+        android:inputType="text"
+        android:backgroundTint="#ffaa00"/>
 
     <EditText
         android:id="@+id/password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="password"
-        android:minHeight="48dp" />
+        android:minHeight="48dp"
+        android:inputType="textPassword"
+        android:backgroundTint="#ffaa00"/>
 
     <Button
         android:id="@+id/login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:backgroundTint="#ffaa00"
+        android:background="@drawable/rounded_corner"
+        android:textColor="#FFF"
         android:text="Login" />
+
 
 
 </LinearLayout>
