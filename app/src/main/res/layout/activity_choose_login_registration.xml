@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".ChooseLoginRegistrationActivity"
     android:orientation="vertical"
-    android:background="@drawable/login_background"
+    android:background="@drawable/choose_login_registration_background"
     >
 
     <Button
