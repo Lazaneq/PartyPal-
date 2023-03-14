@@ -116,7 +116,7 @@ public class MainActivity extends AppCompatActivity {
 
         DatabaseReference femaleDb = FirebaseDatabase.getInstance().getReference().
                 child("Users").child("Female");
-        maleDb.addChildEventListener(new ChildEventListener() {
+        femaleDb.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
                 if(snapshot.getKey().equals(userFb.getUid())){
