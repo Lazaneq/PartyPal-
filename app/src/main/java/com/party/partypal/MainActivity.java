@@ -19,6 +19,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.lorentzos.flingswipe.SwipeFlingAdapterView;
 
 import java.util.ArrayList;
@@ -34,9 +35,9 @@ public class MainActivity extends AppCompatActivity {
     private String currentUId;
     private DatabaseReference usersDb;
 
-
     ListView listView;
     List<cards> rowItems;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,8 +70,8 @@ public class MainActivity extends AppCompatActivity {
             public void onLeftCardExit(Object dataObject) {
                 cards obj = (cards) dataObject;
                 String userId = obj.getUserId();
-                usersDb.child(oppositeUserSex).child(userId).child("connections").
-                        child("nope").child(currentUId);
+                usersDb.child(oppositeUserSex).child(userId).child("connections").child("nope").
+                        child(currentUId).setValue(true);
 
                 Toast.makeText(MainActivity.this, "left", Toast.LENGTH_SHORT).show();
             }
@@ -79,8 +80,8 @@ public class MainActivity extends AppCompatActivity {
             public void onRightCardExit(Object dataObject) {
                 cards obj = (cards) dataObject;
                 String userId = obj.getUserId();
-                usersDb.child(oppositeUserSex).child(userId).child("connections").
-                        child("yeps").child(currentUId);
+                usersDb.child(oppositeUserSex).child(userId).child("connections").child("yeps").
+                        child(currentUId).setValue(true);
                 isConnectionMatch(userId);
                 Toast.makeText(MainActivity.this, "right", Toast.LENGTH_SHORT).show();
             }
@@ -186,7 +187,8 @@ public class MainActivity extends AppCompatActivity {
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
                 if(snapshot.exists() && !snapshot.child("connections").child("nope").hasChild(currentUId) &&
                         !snapshot.child("connections").child("yeps").hasChild(currentUId)){
-                    al.add(snapshot.child("name").getValue().toString());
+                    cards item = new cards(snapshot.getKey(), snapshot.child("name").getValue().toString());
+                    rowItems.add(item);
                     arrayAdapter.notifyDataSetChanged();
                 }
             }
