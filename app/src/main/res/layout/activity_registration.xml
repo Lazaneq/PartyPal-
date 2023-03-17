@@ -13,11 +13,11 @@
         android:layout_width="50dp"
         android:layout_height="60dp"
         android:layout_centerHorizontal="true"
-        app:srcCompat="@drawable/icon" />
+        app:srcCompat="@mipmap/icon" />
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="email"
+        android:hint="E-mail"
         android:id="@+id/email"
         android:inputType="text"
         android:layout_below="@id/icon"
@@ -25,7 +25,7 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="name"
+        android:hint="Imie"
         android:id="@+id/name"
         android:layout_below="@id/email"
         android:inputType="text"
@@ -33,7 +33,7 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="password"
+        android:hint="Haslo"
         android:id="@+id/password"
         android:layout_below="@id/name"
         android:inputType="textPassword"
@@ -48,12 +48,12 @@
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Male"
+            android:text="Mężczyzna"
             android:buttonTint="#ffaa00"/>
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Female"
+            android:text="Kobieta"
             android:buttonTint="#ffaa00"/>
 
     </RadioGroup>
@@ -61,7 +61,7 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Register"
+        android:text="Zarejestruj"
         android:id="@+id/register"
         android:layout_below="@id/radioGroup"
         android:layout_margin="20dp"

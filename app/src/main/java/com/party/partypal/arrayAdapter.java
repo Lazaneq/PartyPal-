@@ -29,9 +29,9 @@ public class arrayAdapter extends ArrayAdapter<cards> {
         }
 
         TextView name = (TextView) convertView.findViewById(R.id.name);
-        // ImageView image = (ImageView) convertView.findViewById(R.id.);
+        //ImageView image = (ImageView) convertView.findViewById(R.id.);
         name.setText(card_item.getName());
-        // image.setImageResource(R.drawable.icon);
+        //image.setImageResource(R.drawable.icon);
 
         return convertView;
     }
