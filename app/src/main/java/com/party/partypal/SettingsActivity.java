@@ -168,18 +168,15 @@ mBack.setOnClickListener(new View.OnClickListener() {
                 }
             });
 
-           uploadTask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-               @Override
-               public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-
-                  // Uri downloadUrl = taskSnapshot.getDownloadUrl();
-
-                   Map userInfo = new HashMap();
-                   //userInfo.put("profileImageUrl", downloadUrl.toString());
-                   mCustomerDatabase.updateChildren(userInfo);
-
-                   finish();
-                   return;
+            filepath.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                @Override
+                public void onSuccess(Uri uri) {
+                    String downloadUrl = uri.toString();
+                    Map userInfo = new HashMap();
+                    userInfo.put("profileImageUrl", downloadUrl);
+                    mCustomerDatabase.updateChildren(userInfo);
+                    finish();
+                    return;
 
 
                }

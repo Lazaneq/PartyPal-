@@ -2,6 +2,7 @@ package com.party.partypal;
 
 import static android.view.LayoutInflater.*;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.media.Image;
 import android.view.LayoutInflater;
@@ -10,6 +11,8 @@ import android.widget.ArrayAdapter;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.bumptech.glide.Glide;
 
 import java.util.List;
 
@@ -29,9 +32,11 @@ public class arrayAdapter extends ArrayAdapter<cards> {
         }
 
         TextView name = (TextView) convertView.findViewById(R.id.name);
-        //ImageView image = (ImageView) convertView.findViewById(R.id.);
+         //("WrongViewCast") ImageView image= (ImageView) convertView.findViewById(R.id.);
         name.setText(card_item.getName());
-        //image.setImageResource(R.drawable.icon);
+      //image.setImageResource(R.drawable.icon);
+       // Glide.with(getContext()).load(card_item.getProfileImageUrl()).into(image);
+
 
         return convertView;
     }

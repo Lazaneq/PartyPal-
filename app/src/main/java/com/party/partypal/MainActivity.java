@@ -185,11 +185,20 @@ public class MainActivity extends AppCompatActivity {
         oppositeSexDb.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-                if(snapshot.exists() && !snapshot.child("connections").child("nope").hasChild(currentUId) &&
-                        !snapshot.child("connections").child("yeps").hasChild(currentUId)){
-                    cards item = new cards(snapshot.getKey(), snapshot.child("name").getValue().toString());
-                    rowItems.add(item);
-                    arrayAdapter.notifyDataSetChanged();
+                if (snapshot.child("sex").getValue() != null) {
+                    if (snapshot.exists() && !snapshot.child("connections").child("nope").hasChild(currentUId) && !snapshot.
+                            child("connections").child("yeps").hasChild(currentUId) && snapshot.child("sex").getValue().
+                            toString().equals(oppositeUserSex)) {
+                        String profileImageUrl = "default";
+                        if (!snapshot.child("profileImageUrl").getValue().equals("default")) {
+                            profileImageUrl = snapshot.child("profileImageUrl").getValue().toString();
+                        }
+                        {
+                            cards item = new cards(snapshot.getKey(), snapshot.child("name").getValue().toString(),snapshot.child("profileImageUrl").getValue().toString());
+                            rowItems.add(item);
+                            arrayAdapter.notifyDataSetChanged();
+                        }
+                    }
                 }
             }
             @Override
