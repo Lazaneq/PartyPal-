@@ -39,9 +39,9 @@ public class SettingsActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
 
-    private DatabaseReference mCustomerDatabase;
+    private DatabaseReference mUserDatabase;
 
-    private String userId, name, phone, profileImageUrl;
+    private String userId, name, phone, profileImageUrl, userSex;
 
     private Uri resultUri;
 
@@ -49,7 +49,7 @@ public class SettingsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
-        String userSex= getIntent().getExtras().getString("userSex");
+
         mNameField=(EditText) findViewById(R.id.name);
         mPhoneField=(EditText) findViewById(R.id.phone);
 
@@ -60,7 +60,8 @@ public class SettingsActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
         userId = mAuth.getCurrentUser().getUid();
-        mCustomerDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child(userSex).child(userId);
+
+        mUserDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child(userId);
 
 
         getUserInfo();
@@ -84,23 +85,22 @@ public class SettingsActivity extends AppCompatActivity {
 
     private void getUserInfo()
     {
-        mCustomerDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
+        mUserDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-            if(dataSnapshot.exists() && dataSnapshot.getChildrenCount()>0)
-            {
-                Map<String, Object> map = (Map<String, Object>) dataSnapshot.getValue();
-                if(map.get("name")!=null)
-                {
-                    name = map.get("name").toString();
-                    mNameField.setText(name);
-                }
-
-                if(map.get("phone")!=null)
-                {
-                    phone = map.get("phone").toString();
-                    mPhoneField.setText(phone);
-                }
+                if(dataSnapshot.exists() && dataSnapshot.getChildrenCount()>0){
+                    Map<String, Object> map = (Map<String, Object>) dataSnapshot.getValue();
+                    if(map.get("name")!=null){
+                        name = map.get("name").toString();
+                        mNameField.setText(name);
+                    }
+                    if(map.get("phone")!=null){
+                        phone = map.get("phone").toString();
+                        mPhoneField.setText(phone);
+                    }
+                    if(map.get("sex")!=null){
+                        userSex = map.get("sex").toString();
+                    }
                 if(map.get("profileImageUrl")!=null)
                 {
                     profileImageUrl = map.get("profileImageUrl").toString();
@@ -118,7 +118,7 @@ public class SettingsActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onCancelled(@NonNull DatabaseError error) {
+            public void onCancelled(@NonNull DatabaseError databaseError) {
 
             }
         });
@@ -132,7 +132,7 @@ public class SettingsActivity extends AppCompatActivity {
         Map userInfo = new HashMap();
         userInfo.put("name", name);
         userInfo.put("phone", phone);
-        mCustomerDatabase.updateChildren(userInfo);
+        mUserDatabase.updateChildren(userInfo);
         if(resultUri != null)
         {
             StorageReference filepath= FirebaseStorage.getInstance().getReference().child("profileImages").child(userId);
@@ -154,7 +154,7 @@ public class SettingsActivity extends AppCompatActivity {
                 String downloadUrl = uri.toString();
                 Map userInfo1 = new HashMap();
                 userInfo1.put("profileImageUrl", downloadUrl.toString());
-                mCustomerDatabase.updateChildren(userInfo1);
+                mUserDatabase.updateChildren(userInfo1);
                 finish();
                 return;
 
@@ -181,5 +181,4 @@ public class SettingsActivity extends AppCompatActivity {
             mProfileImage.setImageURI(resultUri);
         }
     }
-
 }
