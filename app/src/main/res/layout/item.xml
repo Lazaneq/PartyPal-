@@ -19,7 +19,7 @@
         app:cardCornerRadius="7dp"
         android:elevation="7dp"
         android:id="@+id/cardView">
-        <FrameLayout
+        <LinearLayout
             android:layout_gravity="center"
             android:layout_width="300dp"
             android:layout_height="350dp"
@@ -39,7 +39,7 @@
                 android:textSize="30sp"
                 android:paddingLeft="20sp"
                 tools:text="Coś tam" />
-        </FrameLayout>
+        </LinearLayout>
     </androidx.cardview.widget.CardView>
 
 </LinearLayout>

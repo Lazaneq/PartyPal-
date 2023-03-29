@@ -101,7 +101,7 @@ public class SettingsActivity extends AppCompatActivity {
                     if(map.get("sex")!=null){
                         userSex = map.get("sex").toString();
                     }
-                if(map.get("profileImageUrl")!=null)
+                    if(map.get("profileImageUrl")!=null)
                 {
                     profileImageUrl = map.get("profileImageUrl").toString();
                     switch (profileImageUrl) {
