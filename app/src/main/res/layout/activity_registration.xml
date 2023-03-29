@@ -45,16 +45,18 @@
         android:layout_below="@id/password"
         android:gravity="center_horizontal"
         android:orientation="horizontal">
+
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Mężczyzna"
-            android:buttonTint="#ffaa00"/>
+            android:buttonTint="#ffaa00"
+            android:text="Male" />
+
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Kobieta"
-            android:buttonTint="#ffaa00"/>
+            android:buttonTint="#ffaa00"
+            android:text="Female" />
 
     </RadioGroup>
 
