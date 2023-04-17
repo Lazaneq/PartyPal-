@@ -1,4 +1,4 @@
-package com.party.partypal;
+package com.party.partypal.Cards;
 
 public class cards {
     private String userId;

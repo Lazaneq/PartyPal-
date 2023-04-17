@@ -1,11 +1,8 @@
-package com.party.partypal;
+package com.party.partypal.Cards;
 
 import static android.view.LayoutInflater.*;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
-import android.media.Image;
-import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.view.View;
@@ -13,8 +10,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.party.partypal.R;
 
-import java.time.Instant;
 import java.util.List;
 
 public class arrayAdapter extends ArrayAdapter<cards> {

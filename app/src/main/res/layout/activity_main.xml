@@ -18,6 +18,13 @@
         android:text="Wyloguj"
         android:onClick="logoutUser"
         tools:ignore="MissingConstraints" />
+    <Button
+        android:layout_weight="1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Dopasowania"
+        android:onClick="goToMatches"
+        />
 
     <Button
         android:layout_weight="1"
