@@ -30,12 +30,10 @@ public class MatchesActivity extends AppCompatActivity {
         mMatchesAdapter = new MatchesAdapter(getDataSetMatches(),MatchesActivity.this);
         mRecyclerView.setAdapter(mMatchesAdapter);
 
-        MatchesObject obj = new MatchesObject("Test");
-        resultsMatches.add(obj);
-        resultsMatches.add(obj);
-        resultsMatches.add(obj);
-        resultsMatches.add(obj);
-        resultsMatches.add(obj);
+        for (int i=0;i<100;i++){
+            MatchesObject obj = new MatchesObject(Integer.toString(i));
+            resultsMatches.add(obj);
+        }
 
         mMatchesAdapter.notifyDataSetChanged();
     }
