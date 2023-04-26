@@ -1,19 +1,14 @@
 package com.party.partypal.Chat;
 
+import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.os.Bundle;
-
 import com.google.firebase.auth.FirebaseAuth;
-import com.party.partypal.Matches.MatchesActivity;
-import com.party.partypal.Matches.MatchesAdapter;
-import com.party.partypal.Matches.MatchesObject;
 import com.party.partypal.R;
-
 import java.util.ArrayList;
 import java.util.List;
+
 
 public class ChatActivity extends AppCompatActivity {
     private RecyclerView mRecyclerView;
