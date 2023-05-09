@@ -28,6 +28,7 @@
             android:hint="message..."
             android:id="@+id/message"
             />
+
         <Button
             android:layout_weight="0.2"
             android:layout_width="0dp"
